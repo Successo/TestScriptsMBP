@@ -1,6 +1,6 @@
 FACTURAELECTRONICA
 Forma para generar facturas electronicas
-Forma==13500==7335==-73485==1920====$$-$$DTPicker==1605==345==1625==125==Fechainicial====10$$-$$CheckBox==3725==300==9375==5500==chkListaVentas==Mostrar pendientes de timbrar==3$$-$$TextBox==1395==345==13530==5835==txtCliente====2$$-$$CommandButton==1725==690==125==5875==cmdFacturaElectronica==&Generar factura electrónica==0$$-$$Label==1110==195==255==255==lblLabel0==Fecha Inicial==1$$-$$CommandButton==1725==690==2000==5875==cmdCancelar==&Cancelar factura electrónica==14$$-$$CommandButton==1725==690==3875==5875==cmdCliente==&Cambiar el cliente de la venta==15$$-$$CommandButton==1725==690==5750==5875==cmdEliminaXML==&Eliminar XML==16$$-$$CommandButton==1725==690==7625==5875==cmdAbrir==Abrir PDF==17$$-$$DTPicker==1605==345==1625==500==Fechafinal====18$$-$$Label==1005==195==255==630==lblLabel1==Fecha Final==19$$-$$CommandButton==1725==690==3625==125==cmdfiltra==Filtar por fecha==20$$-$$TextBox==3500==345==7750==125==txtClave====21$$-$$TextBox==3500==345==7750==500==txtNombre====22$$-$$Label==1440==195==5880==255==lblLabel2==Clave del cliente==23$$-$$Label==1620==195==5880==630==lblLabel3==Nombre del Cliente==24$$-$$CommandButton==1725==690==9500==5875==cmdcorreo==Enviar por correo==25$$-$$CommandButton==1725==690==11375==125==cmdreporte==Reporte en excel==26$$-$$CommandButton==1725==690==11375==5875==cmdButton8==Consultar Cancelaciones==27$$-$$Label==1770==195==120==5505==lblTD==Timbres Disponibles:==28$$-$$Label==780==195==2130==5505==lblTDP==lblLabel5==29$$-$$
+Forma==13500==7335==-73485==1920====$$-$$DTPicker==1605==345==1625==125==Fechainicial====10$$-$$CheckBox==3725==300==9375==5500==chkListaVentas==Mostrar pendientes de timbrar==3$$-$$TextBox==1395==345==13530==5835==txtCliente====2$$-$$CommandButton==1725==690==125==5875==cmdFacturaElectronica==&Generar factura electrÃ³nica==0$$-$$Label==1110==195==255==255==lblLabel0==Fecha Inicial==1$$-$$CommandButton==1725==690==2000==5875==cmdCancelar==&Cancelar factura electrÃ³nica==14$$-$$CommandButton==1725==690==3875==5875==cmdCliente==&Cambiar el cliente de la venta==15$$-$$CommandButton==1725==690==5750==5875==cmdEliminaXML==&Eliminar XML==16$$-$$CommandButton==1725==690==7625==5875==cmdAbrir==Abrir PDF==17$$-$$DTPicker==1605==345==1625==500==Fechafinal====18$$-$$Label==1005==195==255==630==lblLabel1==Fecha Final==19$$-$$CommandButton==1725==690==3625==125==cmdfiltra==Filtar por fecha==20$$-$$TextBox==3500==345==7750==125==txtClave====21$$-$$TextBox==3500==345==7750==500==txtNombre====22$$-$$Label==1440==195==5880==255==lblLabel2==Clave del cliente==23$$-$$Label==1620==195==5880==630==lblLabel3==Nombre del Cliente==24$$-$$CommandButton==1725==690==9500==5875==cmdcorreo==Enviar por correo==25$$-$$CommandButton==1725==690==11375==125==cmdreporte==Reporte en excel==26$$-$$CommandButton==1725==690==11375==5875==cmdButton8==Consultar Cancelaciones==27$$-$$Label==1770==195==120==5505==lblTD==Timbres Disponibles:==28$$-$$Label==780==195==2130==5505==lblTDP==lblLabel5==29$$-$$
 '----**** 
 '----**** MyBusiness POS V20
 '----**** Version del script: 1.0
@@ -376,7 +376,7 @@ Sub eliminaXML()
     End If
 
     If Not clEmpty("" & rstVenta("uuid")) Then
-       MyMessage "Esta factura ya fué generada no es posible eliminar el XML"
+       MyMessage "Esta factura ya fuÃ© generada no es posible eliminar el XML"
        Exit Sub
     End If 
 
@@ -463,7 +463,7 @@ Sub cancelaFactura()
     If clEmpty( "" & rstVenta("uuid") ) Then  
 
 	    cLineaNueva = Chr(13) & Chr(10)  
-	    If Question( "Esta venta no cuenta con folio fiscal" & cLineaNueva &" ¿Desea cancelarla?: Factura" & Trim(rstVenta("seriedocumento")) & "-" & Trim(rstVenta("no_referen")), 2 ) = False Then
+	    If Question( "Esta venta no cuenta con folio fiscal" & cLineaNueva &" Â¿Desea cancelarla?: Factura" & Trim(rstVenta("seriedocumento")) & "-" & Trim(rstVenta("no_referen")), 2 ) = False Then
 	       Exit Sub
 	    End If
 
@@ -546,7 +546,7 @@ Sub cancelaFactura()
 		MyMessage "Error al guardar en la tabla" & Query.ErrorCollection(n).errNumber & " " & Query.ErrorCollection(n).errDescrip
 		Next   
 	
-	    MyMessage "Envio de solicitud de cancelación exitosa: " & Trim(rstVenta("seriedocumento")) & "-" & Trim(rstVenta("no_referen"))
+	    MyMessage "Envio de solicitud de cancelaciÃ³n exitosa: " & Trim(rstVenta("seriedocumento")) & "-" & Trim(rstVenta("no_referen"))
 		Call fillGrid()	
 		
 	Else 
@@ -581,7 +581,7 @@ Sub cancelaFactura()
 			MyMessage "Error al guardar en la tabla" & Query.ErrorCollection(n).errNumber & " " & Query.ErrorCollection(n).errDescrip
 			Next   
 		
-		    MyMessage "Envio de solicitud de cancelación exitosa: " & Trim(rstVenta("seriedocumento")) & "-" & Trim(rstVenta("no_referen"))
+		    MyMessage "Envio de solicitud de cancelaciÃ³n exitosa: " & Trim(rstVenta("seriedocumento")) & "-" & Trim(rstVenta("no_referen"))
 			Call fillGrid()
 
 		Else
@@ -605,7 +605,7 @@ Sub creaFacturaElectronica()
     Set rstDatosCFDI = CreaRecordSet( "SELECT * FROM cfd_datos", Ambiente.Connection )
 
     If rstDatosCFDI.EOF Then
-       MyMessage "Es necesario que primero capture los datos del emisor en Factura Electrónica - Datos Factura Electrónica"
+       MyMessage "Es necesario que primero capture los datos del emisor en Factura ElectrÃ³nica - Datos Factura ElectrÃ³nica"
        Exit Sub
     End If
 
@@ -633,7 +633,7 @@ Sub creaFacturaElectronica()
     End If
 
     If Trim(Ucase(rstVenta("cliente"))) = "SYS" Then
-       If Question( "Está seguro de querer hacer una Factura Electrónica a un cliente de mostrador", 2 ) = False Then
+       If Question( "EstÃ¡ seguro de querer hacer una Factura ElectrÃ³nica a un cliente de mostrador", 2 ) = False Then
           Exit Sub
        End If
     End If
@@ -647,9 +647,9 @@ Sub creaFacturaElectronica()
        Exit Sub
     End If     
 
-    If Ucase( "" & rstCliente("pais") ) = "MÉXICO" Or Ucase( "" & rstCliente("pais") ) = "MEXICO" Or clEmpty("" & rstCliente("pais") ) Then
+    If Ucase( "" & rstCliente("pais") ) = "MÃ‰XICO" Or Ucase( "" & rstCliente("pais") ) = "MEXICO" Or clEmpty("" & rstCliente("pais") ) Then
        If Len( "" & rstCliente("rfc") ) < 12 AND Trim(Ucase(rstVenta("cliente"))) <> "SYS" Then
-          MyMessage "El cliente necesita un RFC válido"
+          MyMessage "El cliente necesita un RFC vÃ¡lido"
           Exit Sub
        End If
     
@@ -697,10 +697,33 @@ Sub soloTimbrar()
        Exit Sub
     End If  
 
+    nVenta = Val2( Grid.Cell( Grid.SelectedRow, 1 ).Text )
+          
+    Set rstVenta = CreaRecordSet( "SELECT * FROM ventas WHERE venta = '" & nVenta & "'", Ambiente.Connection )
+
+    If rstVenta.EOF Then
+       MyMessage "El movimiento seleccionado ya no existe"
+       Exit Sub 
+    End If
+
+    If Not clEmpty("" & rstVenta("uuid")) Then
+       MyMessage "Esta factura ya fuÃ© generada no es posible eliminar el XML"
+       Exit Sub
+    End If 
+               
+    Ambiente.Connection.Execute "UPDATE ventas SET ComprobanteXML = '' WHERE venta = " & nVenta
+    Ambiente.Connection.Execute "UPDATE ventas SET archivoFE = '' WHERE venta = " & nVenta
+                       
+    Grid.Cell( Grid.SelectedRow, 5 ).Text  = ""
+
+    For n = 1 To 6
+        Grid.Cell( Grid.SelectedRow, n ).BackColor = vbGreen
+    Next    
+
     Set rstDatosCFDI = CreaRecordSet( "SELECT * FROM cfd_datos", Ambiente.Connection )
 
     If rstDatosCFDI.EOF Then
-       MyMessage "Es necesario que primero capture los datos del emisor en Factura Electrónica - Datos factura Electrónica"
+       MyMessage "Es necesario que primero capture los datos del emisor en Factura ElectrÃ³nica - Datos factura ElectrÃ³nica"
        Exit Sub
     End If
 
